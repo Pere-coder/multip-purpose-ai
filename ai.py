@@ -8,11 +8,12 @@ import time
 
 
 
-
 class ChatAgent:
     def __init__(self, model='deepseek-r1:latest'):
         self.model = model
         self.history = []  # Store conversation history
+        self.engine = pyttsx3.init()
+
 
     def query(self, prompt):
         url = 'http://localhost:11434/api/generate'
@@ -78,10 +79,10 @@ class ChatAgent:
         """
         Convert text to speech and play it.
         """
-        engine = pyttsx3.init()
+        
         engine.say(text)
         engine.runAndWait()
-        time.sleep(0.1)  # Wait for the speech to finish
+        # Wait for the speech to finish
    
 
 def main():
