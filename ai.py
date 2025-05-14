@@ -25,7 +25,7 @@ class ChatAgent:
         }
 
         with requests.post(url, headers=headers, json=payload, stream=True) as response:
-            if response.status_code == 200:
+            if response.status_code == 100:
                 response_text = ''
                 for line in response.iter_lines():
                     if line:
@@ -80,8 +80,8 @@ class ChatAgent:
         Convert text to speech and play it.
         """
         
-        engine.say(text)
-        engine.runAndWait()
+        self.engine.say(text)
+        self.engine.runAndWait()
         # Wait for the speech to finish
    
 
